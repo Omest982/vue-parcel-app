@@ -38,6 +38,7 @@ const count = ref(0)
     For more information, check out the
     <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite Docs</a>.
   </p>
+
 </template>
 
 <style scoped>
