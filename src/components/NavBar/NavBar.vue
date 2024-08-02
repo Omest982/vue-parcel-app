@@ -2,21 +2,6 @@
 import { ref } from "vue";
 import Toolbar from "primevue/toolbar";
 import Button from "primevue/button";
-import SplitButton from "primevue/splitbutton";
-import IconField from "primevue/iconfield";
-import InputIcon from "primevue/inputicon";
-import InputText from "primevue/inputtext";
-
-const items = ref([
-  {
-    label: "Update",
-    icon: "pi pi-refresh",
-  },
-  {
-    label: "Delete",
-    icon: "pi pi-times",
-  },
-]);
 </script>
 
 <template>

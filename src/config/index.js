@@ -1,8 +1,9 @@
 import PrimeVue from 'primevue/config';
 
-// Import the new theme
+import 'tailwindcss/tailwind.css'; // Import Tailwind CSS
 import 'primevue/resources/themes/aura-dark-green/theme.css'      
-import 'primeicons/primeicons.css';                     // Icons
+import 'primevue/resources/primevue.min.css'; // Core PrimeVue CSS
+import 'primeicons/primeicons.css'; // PrimeIcons
 
 
 export default (app) => {
