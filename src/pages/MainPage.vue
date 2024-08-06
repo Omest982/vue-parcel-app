@@ -4,6 +4,7 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Button from "primevue/button";
 import MyDialog from "../components/MyDialog/MyDialog.vue";
+import { computed } from "vue";
 
 const cars = ref([
   { vin: "A123", year: 2020, brand: "Toyota", color: "Red" },
@@ -11,7 +12,12 @@ const cars = ref([
   { vin: "C789", year: 2021, brand: "Ford", color: "Green" },
 ]);
 
-const carKeys = Object.keys(cars.value[0]);
+const carKeys = computed(() => {
+  if (cars.value.length > 0) {
+    return Object.keys(cars.value[0]);
+  }
+  return [];
+});
 
 const selectedCars = ref([]);
 

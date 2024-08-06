@@ -13,7 +13,6 @@ import MainPage from './pages/MainPage.vue'
 <style scoped>
 .container {
   width: 70%;
-  align-items: center;
   margin: 0 auto;
 }
 </style>
