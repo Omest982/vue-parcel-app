@@ -39,8 +39,8 @@ const visible = ref(false);
 
 const filters = ref({
   global: {
-    value: ""
-  }
+    value: "",
+  },
 });
 
 function handleSave(newCar) {
@@ -49,9 +49,14 @@ function handleSave(newCar) {
 </script>
 
 <template>
-  <Button class="mb-5 mt-5" label="Add new" @click="visible = true" />
+  <div class="flex items-center justify-between mt-5">
+    <span class="text-4xl font-bold"> Склад </span>
+    <div class="flex">
+      <Button label="Add new" icon="pi pi-plus" severity="success" @click="visible = true" />
 
-  <Button class="mb-5 mt-5 ml-5" label="Form box" />
+      <Button class="ml-5" icon="pi pi-box" label="Form box" />
+    </div>
+  </div>
 
   <DataTable
     v-model:selection="selectedCars"
@@ -64,19 +69,22 @@ function handleSave(newCar) {
     :globalFilterFields="['vin', 'year', 'brand', 'color']"
     :filters="filters"
   >
-   <template #header>
-        <div class="flex justify-end">
-            <IconField iconPosition="left">
-                <InputIcon>
-                    <i class="pi pi-search" />
-                </InputIcon>
-                <InputText v-model="filters['global'].value" placeholder="Keyword Search" />
-            </IconField>
-        </div>
+    <template #header>
+      <div class="flex justify-end">
+        <IconField iconPosition="left">
+          <InputIcon>
+            <i class="pi pi-search" />
+          </InputIcon>
+          <InputText
+            v-model="filters['global'].value"
+            placeholder="Keyword Search"
+          />
+        </IconField>
+      </div>
     </template>
     <template #empty> No cars found. </template>
     <template #loading> Loading cars data. Please wait. </template>
-    <Column selectionMode="multiple" headerStyle="width: 1%"></Column>
+    <Column selectionMode="multiple" headerStyle="width: 1em"></Column>
     <Column field="vin" header="Vin"></Column>
     <Column field="year" sortable header="Year"></Column>
     <Column field="brand" header="Brand"></Column>

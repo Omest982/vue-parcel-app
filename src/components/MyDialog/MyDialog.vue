@@ -26,7 +26,7 @@ const emit = defineEmits({
   }
 });
 
-const newCar = ref(null);
+const newCar = ref((newCar) => initialize(newCar));
 
 function initialize(newCar) {
   newCar.value = props.carKeys.reduce((acc, key) => {
@@ -34,10 +34,6 @@ function initialize(newCar) {
     return acc;
   }, {});
 };
-
-onMounted(() => {
-  initialize(newCar);
-});
 
 function handleCancel() {
     initialize(newCar);
