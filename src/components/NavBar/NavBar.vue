@@ -1,10 +1,12 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import Button from "primevue/button";
 import Menubar from 'primevue/menubar';
 import Badge from 'primevue/badge';
 
-const items = ref([
+const accountBadges = ref(3);
+
+const items = computed(() => [
     {
         label: 'Склад',
         icon: 'pi pi-home',
@@ -23,7 +25,7 @@ const items = ref([
     {
         label: 'Лицевой счет',
         icon: 'pi pi-receipt',
-        badge: 3,
+        badge: accountBadges.value,
         to: '/account'
     },
     {
