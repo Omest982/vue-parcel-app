@@ -8,23 +8,23 @@ import { computed } from "vue";
 import InputText from "primevue/inputtext";
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
+import { getCarsData } from "../api/getCarsData";
 
-const cars = ref([
-  { vin: "A123", year: 2020, brand: "Toyota", color: "Red" },
-  { vin: "B456", year: 2019, brand: "Honda", color: "Blue" },
-  { vin: "C789", year: 2021, brand: "Ford", color: "Green" },
-  { vin: "D012", year: 2022, brand: "BMW", color: "Black" },
-  { vin: "E345", year: 2023, brand: "Tesla", color: "White" },
-  { vin: "F678", year: 2022, brand: "Mercedes", color: "Silver" },
-  { vin: "G901", year: 2021, brand: "Audi", color: "Gray" },
-  { vin: "H234", year: 2020, brand: "Chevrolet", color: "Yellow" },
-  { vin: "I567", year: 2019, brand: "Nissan", color: "Orange" },
-  { vin: "J890", year: 2022, brand: "Volkswagen", color: "Brown" },
-  { vin: "K123", year: 2021, brand: "Hyundai", color: "Purple" },
-  { vin: "L456", year: 2020, brand: "Kia", color: "Pink" },
-  { vin: "M789", year: 2019, brand: "Mazda", color: "Cyan" },
-  { vin: "N012", year: 2022, brand: "Subaru", color: "Lime" },
-]);
+const cars = ref([]);
+const error = ref(null);
+
+const loadCars = async () => {
+  try {
+    cars.value = await getCarsData();
+  } catch (err) {
+    error.value = err.message;
+  }
+};
+
+onMounted(async () => {
+  loadCars();
+});
+
 
 const carKeys = computed(() => {
   if (cars.value.length > 0) {
@@ -46,6 +46,7 @@ const filters = ref({
 function handleSave(newCar) {
   cars.value.push(newCar);
 }
+
 </script>
 
 <template>
