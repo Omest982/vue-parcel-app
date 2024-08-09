@@ -9,11 +9,6 @@ const handleResponse = async (response) => {
   };
 
 export const getCarsData = async () => {
-    const response = await fetch(`${API_URL}/cars`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
+    const response = await fetch(`${API_URL}/cars`);
   return handleResponse(response);
 }
